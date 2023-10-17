@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dimitry</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="image">
+      <img src="https://i.pinimg.com/originals/9c/98/22/9c9822a872aadcc57e2dfb3be7866780.gif" alt="">
+    </div>
+    <div id="particle"></div>
+      <div id="overlay">
+    <header class="p-3 text-white" style="background-color:#6f42c1 ; opacity: 0.6;">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li><a href="#" class="nav-link px-2" style="color: #ff901f;">Home</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      
+      <div class="container mt-3 mb-3 border border-primary rounded-4 bg-white">
+        <div class="mb-3 mt-3">
+          <label for="name" class="form-label">Nom :</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Votre nom"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prénom :</label>
+          <input
+            type="text"
+            class="form-control"
+            id="prenom"
+            placeholder="Votre prénom"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Email :</label>
+          <input
+            type="email"
+            class="form-control"
+            id="prenom"
+            placeholder="Votre adresse mail"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Mot de passe :</label>
+          <input
+            type="password"
+            class="form-control"
+            id="prenom"
+            placeholder="Votre mot de passe"
+          />
+        </div>
+        <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-primary">Confirmer</button>
+        </div>
+      </div>
+    </div>
+    </main>
+    <footer class="footer mt-auto py-3 fixed-bottom " style="background-color:#6f42c1 ; opacity: 0.6;">
+      <div class="container">
+        <span  style="color: #ffd319;"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+          porttitor tellus orci, non tincidunt turpis dictum eu. Donec vitae
+          rhoncus lorem.</span
+        >
+      </div>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </body>
+  <script>
+    var options = {"particles":{"number":{"value":99,"density":{"enable":true,"value_area":552.4033491425909}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3},"image":{"src":"img/github.svg","width":70,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1.5782952832645452,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":false};
+    particlesJS("particle", options);
+  </script>
+  <style>
+    .image img{
+      display: flex;
+      position:fixed;
+      top:0;  
+  right:0;
+  bottom:0;
+  width: 100%;
+  height: auto;
+      z-index: -1;
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+  #particle {
+  background-color: #3c0074;
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:0; 
+   opacity: 0.8;
+  }
+  #overlay {
+  position: relative;
+  }
+  </style>
+</html>
