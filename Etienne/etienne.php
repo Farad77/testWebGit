@@ -1,5 +1,19 @@
-<?php 
-$age = 20;
+<!DOCTYPE html>
+<html lang="fr-FR">
 
-echo "Etienne à ".$age;
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>testWebGit</title>
+</head>
+
+<body>
+    <?php
+
+    $age = 20;
+
+    echo "Etienne à " . $age . " ans.";
+
+    ?>
+</body>
+
+</html>
