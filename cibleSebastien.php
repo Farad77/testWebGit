@@ -3,7 +3,7 @@
 //Affichage mot de passe en clair
 //Passage mot de passe en clair sur le réseau
 //Concaténation d'un input non vérifié d'un utilisateur 
-echo "mot de passe reçu: ".$_GET["motdepasse"];
+//echo "mot de passe reçu: ".$_GET["motdepasse"];
 echo "<br/>";
 $vraimotdepasse="coucou";
 
@@ -15,7 +15,7 @@ $vraimotdepasse="0e856749124568970745678974";
 //Utilisation du double egal, pas de verification d'egalité
 //de type.
 
-if($vraimotdepasse == $_GET["motdepasse"]){
+if($vraimotdepasse === $_GET["motdepasse"]){
     echo "Bonjour,admin!";
 }
 else{
