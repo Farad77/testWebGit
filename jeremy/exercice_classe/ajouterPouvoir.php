@@ -1,16 +1,16 @@
 <?php
 
 require_once("SuperHero.php");
+require_once("GentilPouvoir.php");
 
 session_start();
 
-$nom = $_POST["personnage"];
-$force = $_POST["force"];
-$endurance = $_POST["endurance"];
+$nom = $_POST["nom"];
+$puissance = $_POST["puissance"];
 
-$superHero = new SuperHero();
-$superHero->setNom($nom)->setForce($force)->setEndurance($endurance);
-array_push($_SESSION["Personnages"], $superHero);
+$superPouvoir = new GentilPouvoir();
+$superPouvoir->setNom($nom)->setPuissance($puissance);
+array_push($_SESSION["Pouvoirs"], $superHero);
 
 header("Location: makeHero.php");
 

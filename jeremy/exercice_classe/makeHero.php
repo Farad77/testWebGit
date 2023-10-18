@@ -21,6 +21,12 @@
         <input type="number" name="endurance">
         <input type="submit" name="submit">
     </form>
+
+    <form action="ajouterPouvoir.php" method="POST">
+        <input type="text" name="nom">
+        <input type="number" name="puissance">
+        <input type="submit" name="submit">
+    </form>
 </body>
 </html>
 
@@ -91,10 +97,10 @@ if (!isset($_SESSION["Pouvoirs"])){
 <thead><th>Pouvoir</th><th>Puissance</th></thead>
 <tbody>
     <?php
-    foreach($_SESSION["Personnages"] as $perso) {
+    foreach($_SESSION["Pouvoirs"] as $pouvoir) {
         echo "<tr>";
-        echo "<td>" . $perso->getNom()."</td>";
-        echo "<td>" . $perso->getPuissance()."</td>";
+        echo "<td>" . $pouvoir->getNom()."</td>";
+        echo "<td>" . $pouvoir->getPuissance()."</td>";
         echo "<tr>";
     }
     ?>
