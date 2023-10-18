@@ -1,0 +1,3 @@
+- Jeu PVP où le joueur controle un super héros, ou un super villain.
+- Les personnages sont choisis par le joueur dans un pool de 3 possibles lors de la création du compte.
+- Le joueur peut ensuite lancer des parties avec d'autres joueurs 
