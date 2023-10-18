@@ -24,6 +24,7 @@
     <main class="form-signin w-100 d-block mx-auto text-center">
 
     <?php 
+        // echo $passwordValidateHash = password_hash("passwordtest", PASSWORD_BCRYPT);
         if (empty($_POST['userEmail'])) {
             $message = "Veuillez saisir votre adresse mail";
         } elseif (empty($_POST['userPassword'])) {
@@ -33,9 +34,8 @@
             $userPassword = $_POST['userPassword'];
            if (isset($userEmail) && isset($userPassword)) {
             $emailValidate = "test@email.re";
-            $passwordValidate = "passwordtest";
-
-            if ($userEmail === $emailValidate && $userPassword === $passwordValidate) {
+            $passwordValidateHash = '$2y$10$XwtD/9P8.ra/ClA7ukif.OFe/9gAP6TW/9Q7ADHkId3xeUdHafImG';
+            if ($userEmail === $emailValidate && password_verify($userPassword,$passwordValidateHash)) {
                 header("Location: pageSecrete.php");
                 session_start();
                 $_SESSION['userEmail'] = $userEmail;
