@@ -1,0 +1,12 @@
+Recherche RFC pour avoir les informations officielle http. 
+
+VERBE URI HEADER et BODY : Requette http
+
+Voir les codes d'erreur 100(Message d'informations), 200 (ok) ,300 (message de redirection) 400 (erreur coté client) , 500 (erreur coté serveur) 
+
+Script php qui créer une signature de mail pour savoir quand le mail a été ouvert
+
+le triple égale vérifie la valeur et le type "===" or que le "==" vérifie uniquement la valeur.
+Switch conditions.
+Eviter les concaténations de variable recu sans vérifications, 
+Ecrire les résultats dans un fichier
