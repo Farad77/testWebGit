@@ -105,7 +105,8 @@
         </div>
         <form action="cibleSebastien.php" method="get">
             <input type="password" name="motdepasse" />
-            <button type="submit" class="btn btn-primary">Se Connecter</button>
+            <button type="submit" class="btn btn-primary">
+                Se Connecter</button>
         </form>
     </main>
     <footer>
