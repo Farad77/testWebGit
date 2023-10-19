@@ -1,6 +1,7 @@
 <?php
 
 require_once("SuperHero.php");
+require_once("db.php");
 
 session_start();
 
@@ -9,12 +10,16 @@ session_start();
 // L'ajouter au tableau de session de Personnages 
 // Rediriger vers la page d'accueil
 
-$nom = $_POST["nom"];
-$force = $_POST["force"];
-$endurance = $_POST["endurance"];
+if (isset($_POST["nom"]) && isset($_POST["force"]) && isset($_POST["endurance"])) {
 
-$superHero = new SuperHero();
-$superHero->setNom($nom)->setForce($force)->setEndurance($endurance);
-array_push($_SESSION["Personnages"], $superHero);
+    $typePersonnages = "Super Hero";
+    $nom = $_POST["nom"];
+    $force = $_POST["force"];
+    $endurance = $_POST["endurance"];
+
+    $requete = "INSERT INTO superhero (typePersonnages, nom, forcehero, endurance) VALUES (?, ?, ?, ?)";
+    $resultat = $db->prepare($requete);
+    $resultat->execute([$typePersonnages, $nom, $force, $endurance]);
+}
 
 header("Location: herocorpEtienne.php");

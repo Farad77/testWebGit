@@ -17,6 +17,7 @@
         <!-- place navbar here -->
     </header>
     <main class="container my-5">
+        <!-- Formulaire Super Hero -->
         <div class="p-5 text-center bg-body-tertiary rounded-3">
             <div class="col-lg-8 mx-auto fs-5 text-muted">
                 <h1 class="text-body-emphasis">Ajouter un Super Hero</h1>
@@ -29,6 +30,7 @@
                 </form>
             </div>
 
+            <!-- Formulaire Super Villain -->
             <div class="p-5 text-center bg-body-tertiary rounded-3">
                 <div class="col-lg-8 mx-auto fs-5 text-muted">
                     <h1 class="text-body-emphasis">Ajouter un Super Villain</h1>
@@ -42,14 +44,24 @@
                 </div>
             </div>
 
+            <!-- Formulaire Gentil Pouvoir -->
             <div class="p-5 text-center bg-body-tertiary rounded-3">
                 <div class="col-lg-8 mx-auto fs-5 text-muted">
-                    <h1 class="text-body-emphasis">Ajouter un pouvoir</h1>
-                    <form action="ajouterPouvoir.php" method="post">
-                        <select name="categorie" id="categorie">
-                            <option value="Gentil" selected>Gentil</option>
-                            <option value="Mechant">Mechant</option>
-                        </select>
+                    <h1 class="text-body-emphasis">Ajouter un gentil pouvoir</h1>
+                    <form action="ajouterGentilPouvoir.php" method="post">
+                        <input type="text" name="nom" placeholder="Nom du pouvoir" required>
+                        <input type="number" name="puissance" placeholder="Puissance du pouvoir" required>
+                        <br><br>
+                        <input class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="submit" name="submit">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Formulaire Mechant Pouvoir -->
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+                <div class="col-lg-8 mx-auto fs-5 text-muted">
+                    <h1 class="text-body-emphasis">Ajouter un mechant pouvoir</h1>
+                    <form action="ajouterMechantPouvoir.php" method="post">
                         <input type="text" name="nom" placeholder="Nom du pouvoir" required>
                         <input type="number" name="puissance" placeholder="Puissance du pouvoir" required>
                         <br><br>
@@ -64,8 +76,13 @@
         /* require("Personnage.php"); */
         require("SuperVillain.php");
         require("SuperHero.php");
+        require_once("db.php");
 
         session_start();
+
+        if ($_SESSION["verificationLogin"] === false) {
+            header("Location: login.php");
+        }
 
         /* 
         // Pouvoirs 
@@ -148,26 +165,65 @@
         ?>
 
         <!-- Personnages -->
-        <h1 class="text-body-emphasis">Liste des personnages</h1>
+        <h1 class="text-body-emphasis">Liste des Super Hero</h1>
         <table>
             <thead>
-                <th>Camp</th>
+                <th>Type</th>
                 <th>Nom</th>
                 <th>Force</th>
                 <th>Endurance</th>
+                <th>Pouvoirs</th>
             </thead>
             <tbody>
                 <?php
-                foreach ($_SESSION["Personnages"] as $perso) {
+
+                $requete = $db->prepare("SELECT * FROM superhero");
+                $requete->setFetchMode(PDO::FETCH_ASSOC);
+                $requete->execute();
+                $superhero = $requete->fetchAll();
+
+                foreach ($superhero as $hero) {
                     echo "<tr>";
-                    if ($perso instanceof SuperHero) {
+                    /* if ($hero instanceof SuperHero) {
                         echo "<td>SuperHero</td>";
                     } else {
                         echo "<td>SuperVillain</td>";
-                    }
-                    echo "<td>" . $perso->getNom() . "</td>";
-                    echo "<td>" . $perso->getForce() . "</td>";
-                    echo "<td>" . $perso->getEndurance() . "</td>";
+                    } */
+                    echo "<td>" . $hero["typePersonnages"] . "</td>";
+                    echo "<td>" . $hero["nom"] . "</td>";
+                    echo "<td>" . $hero["forcehero"] . "</td>";
+                    echo "<td>" . $hero["endurance"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h1 class="text-body-emphasis">Liste des Super Villain</h1>
+        <table>
+            <thead>
+                <th>Type</th>
+                <th>Nom</th>
+                <th>Force</th>
+                <th>Endurance</th>
+                <th>Pouvoirs</th>
+            </thead>
+            <tbody>
+                <?php
+
+                $requete = $db->prepare("SELECT * FROM supervillain");
+                $requete->setFetchMode(PDO::FETCH_ASSOC);
+                $requete->execute();
+                $supervillain = $requete->fetchAll();
+
+                foreach ($supervillain as $villain) {
+                    echo "<tr>";
+                    echo "<td>" . $villain["typePersonnages"] . "</td>";
+                    echo "<td>" . $villain["nom"] . "</td>";
+                    echo "<td>" . $villain["forcevillain"] . "</td>";
+                    echo "<td>" . $villain["endurance"] . "</td>";
                     echo "</tr>";
                 }
                 ?>
@@ -177,7 +233,7 @@
         <br>
 
         <!-- Pouvoirs -->
-        <h1 class="text-body-emphasis">Liste des pouvoirs</h1>
+        <h1 class="text-body-emphasis">Liste des gentil pouvoirs</h1>
         <table>
             <thead>
                 <th>Categorie</th>
@@ -186,11 +242,45 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($_SESSION["Pouvoirs"] as $pouvoir) {
+
+                $requete = $db->prepare("SELECT * FROM gentilpouvoirs");
+                $requete->setFetchMode(PDO::FETCH_ASSOC);
+                $requete->execute();
+                $gentilpouvoirs = $requete->fetchAll();
+
+                foreach ($gentilpouvoirs as $pouvoir) {
                     echo "<tr>";
-                    echo "<td>" . $pouvoir->getCategorie() . "</td>";
-                    echo "<td>" . $pouvoir->getNom() . "</td>";
-                    echo "<td>" . $pouvoir->getPuissance() . "</td>";
+                    echo "<td>" . $pouvoir["categorie"] . "</td>";
+                    echo "<td>" . $pouvoir["nom"] . "</td>";
+                    echo "<td>" . $pouvoir["puissance"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h1 class="text-body-emphasis">Liste des mechant pouvoirs</h1>
+        <table>
+            <thead>
+                <th>Categorie</th>
+                <th>Nom</th>
+                <th>Puissance</th>
+            </thead>
+            <tbody>
+                <?php
+
+                $requete = $db->prepare("SELECT * FROM mechantpouvoirs");
+                $requete->setFetchMode(PDO::FETCH_ASSOC);
+                $requete->execute();
+                $mechantpouvoirs = $requete->fetchAll();
+
+                foreach ($mechantpouvoirs as $pouvoir) {
+                    echo "<tr>";
+                    echo "<td>" . $pouvoir["categorie"] . "</td>";
+                    echo "<td>" . $pouvoir["nom"] . "</td>";
+                    echo "<td>" . $pouvoir["puissance"] . "</td>";
                     echo "</tr>";
                 }
                 ?>
